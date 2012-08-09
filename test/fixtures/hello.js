@@ -1,9 +1,9 @@
-require.register("emitter.js", function(module, exports, require){
+require.register("emitter/index.js", function(module, exports, require){
 module.exports = 'emitter';
 });
-require.register("foo.js", function(module, exports, require){
+require.register("hello/foo.js", function(module, exports, require){
 module.exports = 'foo';
 });
-require.register("bar.js", function(module, exports, require){
+require.register("hello/bar.js", function(module, exports, require){
 module.exports = 'bar';
 });

@@ -25,6 +25,7 @@ module.exports = Builder;
 
 function Builder(dir) {
   this.dir = dir;
+  this.name = basename(dir);
 }
 
 /**
@@ -104,9 +105,11 @@ Builder.prototype.buildScripts = function(fn){
 
     if (conf.dependencies) {
       Object.keys(conf.dependencies).forEach(function(dep){
+        dep = dep.replace('/', '-');
         var dir = self.path(path.join('..', dep));
         debug('building %s dependency', dir);
         var builder = new Builder(dir);
+        batch.push(builder.buildScripts.bind(builder));
       });
     }
 
@@ -115,7 +118,7 @@ Builder.prototype.buildScripts = function(fn){
       batch.push(function(done){
         fs.readFile(path, 'utf8', function(err, str){
           if (err) return fn(err);
-          done(null, register(basename(path), str));
+          done(null, register(conf.name + '/' + script, str));
         });
       })
     });
