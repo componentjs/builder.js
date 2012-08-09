@@ -6,7 +6,8 @@
 
 var fs = require('fs')
   , path = require('path')
-  , Batch = require('batch');
+  , Batch = require('batch')
+  , basename = path.basename;
 
 /**
  * Expose `Builder`.
@@ -91,7 +92,10 @@ Builder.prototype.buildScripts = function(fn){
     conf.scripts.forEach(function(script){
       var path = self.path(script);
       batch.push(function(done){
-        fs.readFile(path, 'utf8', done);
+        fs.readFile(path, 'utf8', function(err, str){
+          if (err) return fn(err);
+          fn(null, register(basename(path), str));
+        });
       })
     });
 
@@ -127,4 +131,20 @@ Builder.prototype.buildStyles = function(fn){
       fn(null, res.join('\n'));
     });
   });
+};
+
+/**
+ * Return a js string representing a commonjs
+ * client-side module with the given `path` and `js`.
+ *
+ * @param {String} path
+ * @param {String} js
+ * @return {String}
+ * @api private
+ */
+
+function register(path, js){
+  return 'require.register("' + path + '", function(module, exports, require){\n'
+    + js
+    + '\n});';
 };
