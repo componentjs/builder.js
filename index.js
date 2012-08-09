@@ -15,15 +15,29 @@ var fs = require('fs')
 module.exports = Builder;
 
 /**
- * Initialize a new `Builder` with the given `pkg` json object.
+ * Initialize a new `Builder` with the given component `dir`.
  *
- * @param {Object} pkg
+ * @param {String} dir
  * @api private
  */
 
-function Builder(pkg) {
-  this.pkg = pkg;
+function Builder(dir) {
+  this.dir = dir;
+  this.componentsDir = this.path('..');
 }
+
+/**
+ * Return a resolved path relative to this
+ * builder's dir.
+ *
+ * @param {String} file
+ * @return {String}
+ * @api public
+ */
+
+Builder.prototype.path = function(file){
+  return path.resolve(path.join(this.dir, file));
+};
 
 /**
  * Build to `dir`.
