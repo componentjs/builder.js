@@ -3,7 +3,9 @@
  * Module dependencies.
  */
 
-var Builder = require('..');
+var Builder = require('..')
+  , fs = require('fs')
+  , read = fs.readFileSync;
 
 describe('Builder', function(){
   describe('.buildScripts(fn)', function(){
@@ -11,7 +13,9 @@ describe('Builder', function(){
       var builder = new Builder('test/fixtures/hello');
       builder.buildScripts(function(err, js){
         if (err) return done(err);
-        console.log(js);
+        var out = read('test/fixtures/hello.js', 'utf8');
+        js.should.equal(out);
+        done();
       })
     })
   })

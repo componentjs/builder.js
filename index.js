@@ -103,7 +103,7 @@ Builder.prototype.buildScripts = function(fn){
 };
 
 /**
- * Build styles and invoke `fn(err)`.
+ * Build styles and invoke `fn(err, css)`.
  *
  * @param {Function} fn
  * @api private
