@@ -7,6 +7,7 @@
 var fs = require('fs')
   , path = require('path')
   , Batch = require('batch')
+  , debug = require('debug')('component:builder')
   , basename = path.basename;
 
 /**
@@ -24,7 +25,6 @@ module.exports = Builder;
 
 function Builder(dir) {
   this.dir = dir;
-  this.componentsDir = this.path('..');
 }
 
 /**
@@ -50,7 +50,9 @@ Builder.prototype.path = function(file){
 Builder.prototype.json = function(fn){
   var self = this;
   if (this.conf) return fn(null, this.conf);
-  fs.readFile(this.path('component.json'), 'utf8', function(err, str){
+  var path = this.path('component.json');
+  debug('reading %s', path);
+  fs.readFile(path, 'utf8', function(err, str){
     if (err) return fn(err);
     try {
       fn(null, self.conf = JSON.parse(str));
@@ -73,6 +75,7 @@ Builder.prototype.json = function(fn){
 
 Builder.prototype.build = function(fn){
   var batch = new Batch;
+  debug('building %s', this.dir);
   batch.push(this.buildScripts.bind(this));
   batch.push(this.buildStyles.bind(this));
   batch.end(function(err, res){
@@ -93,9 +96,19 @@ Builder.prototype.build = function(fn){
 
 Builder.prototype.buildScripts = function(fn){
   var self = this;
+  debug('building %s js', this.dir);
+
   this.json(function(err, conf){
     if (err) return fn(err);
     var batch = new Batch;
+
+    if (conf.dependencies) {
+      Object.keys(conf.dependencies).forEach(function(dep){
+        var dir = self.path(path.join('..', dep));
+        debug('building %s dependency', dir);
+        var builder = new Builder(dir);
+      });
+    }
 
     conf.scripts.forEach(function(script){
       var path = self.path(script);
@@ -123,6 +136,8 @@ Builder.prototype.buildScripts = function(fn){
 
 Builder.prototype.buildStyles = function(fn){
   var self = this;
+  debug('building %s css', this.dir);
+
   this.json(function(err, conf){
     if (err) return fn(err);
     var batch = new Batch;
