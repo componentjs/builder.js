@@ -120,7 +120,7 @@ Builder.prototype.buildScripts = function(fn){
           if (err) return fn(err);
           done(null, register(conf.name + '/' + script, str));
         });
-      })
+      });
     });
 
     batch.end(function(err, res){
@@ -159,7 +159,7 @@ Builder.prototype.buildStyles = function(fn){
       var path = self.path(script);
       batch.push(function(done){
         fs.readFile(path, 'utf8', done);
-      })
+      });
     });
 
     batch.end(function(err, res){
