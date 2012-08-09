@@ -1,0 +1,10 @@
+{
+  "name": "hello",
+  "description": "hello world component",
+  "version": "0.0.1",
+  "dependencies": {
+    "component/emitter": "*"
+  },
+  "scripts": ["foo.js", "bar.js"],
+  "styles": ["foo.css", "bar.css"]
+}
