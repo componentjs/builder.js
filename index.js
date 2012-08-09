@@ -40,6 +40,24 @@ Builder.prototype.path = function(file){
 };
 
 /**
+ * Load JSON and invoke `fn(err, obj)`.
+ *
+ * @param {Function} fn
+ * @api public
+ */
+
+Builder.prototype.json = function(fn){
+  fs.readFile(this.path('component.json'), 'utf8', function(err, str){
+    if (err) return fn(err);
+    try {
+      fn(null, JSON.parse(str));
+    } catch (err) {
+      fn(err);
+    }
+  });
+};
+
+/**
  * Build to `dir`.
  *
  * @param {String} dir
