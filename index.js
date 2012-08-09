@@ -101,6 +101,8 @@ Builder.prototype.buildScripts = function(fn){
 
   this.json(function(err, conf){
     if (err) return fn(err);
+    if (!conf.scripts) return fn();
+
     var batch = new Batch;
 
     if (conf.dependencies) {
@@ -143,6 +145,8 @@ Builder.prototype.buildStyles = function(fn){
 
   this.json(function(err, conf){
     if (err) return fn(err);
+    if (!conf.styles) return fn();
+
     var batch = new Batch;
 
     if (conf.dependencies) {
