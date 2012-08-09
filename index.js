@@ -47,10 +47,12 @@ Builder.prototype.path = function(file){
  */
 
 Builder.prototype.json = function(fn){
+  var self = this;
+  if (this.config) return fn(null, this.config);
   fs.readFile(this.path('component.json'), 'utf8', function(err, str){
     if (err) return fn(err);
     try {
-      fn(null, JSON.parse(str));
+      fn(null, self.config = JSON.parse(str));
     } catch (err) {
       fn(err);
     }
