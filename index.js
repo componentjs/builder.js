@@ -145,6 +145,16 @@ Builder.prototype.buildStyles = function(fn){
     if (err) return fn(err);
     var batch = new Batch;
 
+    if (conf.dependencies) {
+      Object.keys(conf.dependencies).forEach(function(dep){
+        dep = dep.replace('/', '-');
+        var dir = self.path(path.join('..', dep));
+        debug('building %s dependency', dir);
+        var builder = new Builder(dir);
+        batch.push(builder.buildStyles.bind(builder));
+      });
+    }
+
     conf.styles.forEach(function(script){
       var path = self.path(script);
       batch.push(function(done){
