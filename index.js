@@ -61,19 +61,27 @@ Builder.prototype.json = function(fn){
 };
 
 /**
- * Build to `dir`.
+ * Build and invoke `fn(err, res)`, where `res`
+ * is an object containing:
  *
- * @param {String} dir
+ *  - `css`
+ *  - `js`
+ *
  * @param {Function} fn
  * @api private
  */
 
-Builder.prototype.build = function(dir, fn){
+Builder.prototype.build = function(fn){
   var batch = new Batch;
-  this.dir = dir;
   batch.push(this.buildScripts.bind(this));
   batch.push(this.buildStyles.bind(this));
-  batch.end(fn);
+  batch.end(function(err, res){
+    if (err) return fn(err);
+    fn(null, {
+      js: res.shift(),
+      css: res.shift()
+    });
+  });
 };
 
 /**

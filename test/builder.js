@@ -31,4 +31,26 @@ describe('Builder', function(){
       })
     })
   })
+
+  describe('.build(fn)', function(){
+    it('should build js', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var out = read('test/fixtures/hello.js', 'utf8');
+        res.js.should.equal(out);
+        done();
+      })
+    })
+
+    it('should build css', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var out = read('test/fixtures/hello.css', 'utf8');
+        res.css.should.equal(out);
+        done();
+      })
+    })
+  })
 })
