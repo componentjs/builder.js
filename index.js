@@ -48,11 +48,11 @@ Builder.prototype.path = function(file){
 
 Builder.prototype.json = function(fn){
   var self = this;
-  if (this.config) return fn(null, this.config);
+  if (this.conf) return fn(null, this.conf);
   fs.readFile(this.path('component.json'), 'utf8', function(err, str){
     if (err) return fn(err);
     try {
-      fn(null, self.config = JSON.parse(str));
+      fn(null, self.conf = JSON.parse(str));
     } catch (err) {
       fn(err);
     }
@@ -76,14 +76,30 @@ Builder.prototype.build = function(dir, fn){
 };
 
 /**
- * Build scripts and invoke `fn(err)`.
+ * Build scripts and invoke `fn(err, js)`.
  *
  * @param {Function} fn
  * @api private
  */
 
-Builder.prototype.buildStyles = function(fn){
-  fn();
+Builder.prototype.buildScripts = function(fn){
+  var self = this;
+  this.json(function(err, conf){
+    if (err) return fn(err);
+    var batch = new Batch;
+
+    conf.scripts.forEach(function(script){
+      var path = self.path(script);
+      batch.push(function(done){
+        fs.readFile(path, 'utf8', done);
+      })
+    });
+
+    batch.end(function(err, res){
+      if (err) return fn(err);
+      fn(null, res.join('\n'));
+    });
+  });
 };
 
 /**
