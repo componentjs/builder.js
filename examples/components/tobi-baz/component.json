@@ -1,0 +1,7 @@
+{
+  "name": "bar",
+  "dependencies": {
+    "tobi/baz": "*"
+  },
+  "scripts": ["index.js"]
+}
