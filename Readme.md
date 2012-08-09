@@ -3,7 +3,7 @@
 
   Component build tool
 
-## TOC
+## API
    - [Builder](#builder)
      - [.buildScripts(fn)](#builder-buildscriptsfn)
      - [.buildStyles(fn)](#builder-buildstylesfn)
