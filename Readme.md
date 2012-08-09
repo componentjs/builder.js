@@ -1,7 +1,12 @@
 
 # component-builder
 
-  Component build tool
+  Component build tool. This is the library that `component(1)` utilizes
+  to perform component builds.
+
+## Installation
+
+    $ npm install component-builder
 
 ## API
    - [Builder](#builder)
