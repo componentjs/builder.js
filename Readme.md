@@ -3,6 +3,69 @@
 
   Component build tool
 
+## TOC
+   - [Builder](#builder)
+     - [.buildScripts(fn)](#builder-buildscriptsfn)
+     - [.buildStyles(fn)](#builder-buildstylesfn)
+     - [.build(fn)](#builder-buildfn)
+<a name="" />
+ 
+<a name="builder" />
+## Builder
+<a name="builder-buildscriptsfn" />
+### .buildScripts(fn)
+should build the scripts.
+
+```js
+var builder = new Builder('test/fixtures/hello');
+builder.buildScripts(function(err, js){
+  if (err) return done(err);
+  var out = read('test/fixtures/hello.js', 'utf8');
+  js.should.equal(out);
+  done();
+})
+```
+
+<a name="builder-buildstylesfn" />
+### .buildStyles(fn)
+should build the styles.
+
+```js
+var builder = new Builder('test/fixtures/hello');
+builder.buildStyles(function(err, css){
+  if (err) return done(err);
+  var out = read('test/fixtures/hello.css', 'utf8');
+  css.should.equal(out);
+  done();
+})
+```
+
+<a name="builder-buildfn" />
+### .build(fn)
+should build js.
+
+```js
+var builder = new Builder('test/fixtures/hello');
+builder.build(function(err, res){
+  if (err) return done(err);
+  var out = read('test/fixtures/hello.js', 'utf8');
+  res.js.should.equal(out);
+  done();
+})
+```
+
+should build css.
+
+```js
+var builder = new Builder('test/fixtures/hello');
+builder.build(function(err, res){
+  if (err) return done(err);
+  var out = read('test/fixtures/hello.css', 'utf8');
+  res.css.should.equal(out);
+  done();
+})
+```
+
 ## License 
 
 (The MIT License)
