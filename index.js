@@ -94,7 +94,7 @@ Builder.prototype.buildScripts = function(fn){
       batch.push(function(done){
         fs.readFile(path, 'utf8', function(err, str){
           if (err) return fn(err);
-          fn(null, register(basename(path), str));
+          done(null, register(basename(path), str));
         });
       })
     });
