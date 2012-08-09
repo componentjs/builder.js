@@ -110,5 +110,21 @@ Builder.prototype.buildScripts = function(fn){
  */
 
 Builder.prototype.buildStyles = function(fn){
-  fn();
+  var self = this;
+  this.json(function(err, conf){
+    if (err) return fn(err);
+    var batch = new Batch;
+
+    conf.styles.forEach(function(script){
+      var path = self.path(script);
+      batch.push(function(done){
+        fs.readFile(path, 'utf8', done);
+      })
+    });
+
+    batch.end(function(err, res){
+      if (err) return fn(err);
+      fn(null, res.join('\n'));
+    });
+  });
 };

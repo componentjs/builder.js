@@ -19,4 +19,16 @@ describe('Builder', function(){
       })
     })
   })
+
+  describe('.buildStyles(fn)', function(){
+    it('should build the styles', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.buildStyles(function(err, css){
+        if (err) return done(err);
+        var out = read('test/fixtures/hello.css', 'utf8');
+        css.should.equal(out);
+        done();
+      })
+    })
+  })
 })
