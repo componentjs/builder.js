@@ -18,6 +18,14 @@ describe('Builder', function(){
         done();
       })
     })
+
+    it('should emit "dependency" events', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.buildScripts(function(){});
+      builder.on('dependency', function(builder){
+        console.log(builder);
+      });
+    })
   })
 
   describe('.buildStyles(fn)', function(){
