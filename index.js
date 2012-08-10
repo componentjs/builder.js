@@ -131,13 +131,14 @@ Builder.prototype.buildScripts = function(fn){
 
   this.json(function(err, conf){
     if (err) return fn(err);
-    if (!conf.scripts) return fn();
+    if (!conf.scripts) return fn(null, '');
 
     var batch = new Batch;
 
     if (conf.dependencies) {
       Object.keys(conf.dependencies).forEach(function(dep){
         dep = dep.replace('/', '-');
+        if (self.ignoring(dep)) return debug('ignoring %s', dep);
         var dir = self.path(path.join('..', dep));
         debug('building %s dependency', dir);
         var builder = new Builder(dir);
@@ -175,13 +176,14 @@ Builder.prototype.buildStyles = function(fn){
 
   this.json(function(err, conf){
     if (err) return fn(err);
-    if (!conf.styles) return fn();
+    if (!conf.styles) return fn(null, '');
 
     var batch = new Batch;
 
     if (conf.dependencies) {
       Object.keys(conf.dependencies).forEach(function(dep){
         dep = dep.replace('/', '-');
+        if (self.ignoring(dep)) return debug('ignoring %s', dep);
         var dir = self.path(path.join('..', dep));
         debug('building %s dependency', dir);
         var builder = new Builder(dir);
