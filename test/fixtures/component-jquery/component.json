@@ -1,0 +1,9 @@
+{
+  "name": "dialog",
+  "description": "dialog component",
+  "version": "0.0.1",
+  "scripts": ["index.js"],
+  "dependencies": {
+    "component/jquery": "*"
+  }
+}
