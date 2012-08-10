@@ -1,5 +1,5 @@
 
-# component-builder
+# builder.js
 
   Component build tool. This is the library that `component(1)` utilizes
   to perform component builds.
