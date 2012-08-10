@@ -9,67 +9,29 @@
     $ npm install component-builder
 
 ## API
-   - [Builder](#builder)
-     - [.buildScripts(fn)](#builder-buildscriptsfn)
-     - [.buildStyles(fn)](#builder-buildstylesfn)
-     - [.build(fn)](#builder-buildfn)
-<a name="" />
- 
-<a name="builder" />
-## Builder
-<a name="builder-buildscriptsfn" />
-### .buildScripts(fn)
-should build the scripts.
+
+### new Builder(dir)
+
+  Creates a new `Builder` for the given component's `dir`:
 
 ```js
-var builder = new Builder('test/fixtures/hello');
-builder.buildScripts(function(err, js){
-  if (err) return done(err);
-  var out = read('test/fixtures/hello.js', 'utf8');
-  js.should.equal(out);
-  done();
-})
+var Builder = require('component-builder');
+var builder = new Builder('components/visionmedia-page');
 ```
 
-<a name="builder-buildstylesfn" />
-### .buildStyles(fn)
-should build the styles.
+### Builder#ignore(name, [type])
+
+  Ignore building `name`'s `type`, where `type` is "scripts" or "styles". When
+  no `type` is given both are ignored, this includes dependencies of `name` as well.
 
 ```js
-var builder = new Builder('test/fixtures/hello');
-builder.buildStyles(function(err, css){
-  if (err) return done(err);
-  var out = read('test/fixtures/hello.css', 'utf8');
-  css.should.equal(out);
-  done();
-})
+builder.ignore('visionmedia-page')
 ```
 
-<a name="builder-buildfn" />
-### .build(fn)
-should build js.
+### Builder#build(fn)
 
-```js
-var builder = new Builder('test/fixtures/hello');
-builder.build(function(err, res){
-  if (err) return done(err);
-  var out = read('test/fixtures/hello.js', 'utf8');
-  res.js.should.equal(out);
-  done();
-})
-```
-
-should build css.
-
-```js
-var builder = new Builder('test/fixtures/hello');
-builder.build(function(err, res){
-  if (err) return done(err);
-  var out = read('test/fixtures/hello.css', 'utf8');
-  res.css.should.equal(out);
-  done();
-})
-```
+  Perform the build and pass an object to `fn(err, obj)` containing
+  the `.css` and `.js` properties.
 
 ## License 
 
