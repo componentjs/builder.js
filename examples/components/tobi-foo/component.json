@@ -1,7 +1,8 @@
 {
   "name": "foo",
   "dependencies": {
-    "tobi/bar": "*"
+    "tobi/bar": "*",
+    "tobi/ferret": "*"
   },
   "scripts": ["index.js"]
 }

@@ -1,0 +1,7 @@
+{
+  "name": "ferret",
+  "dependencies": {
+    "tobi/bar": "*"
+  },
+  "scripts": ["index.js"]
+}
