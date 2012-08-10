@@ -3,5 +3,6 @@
   "dependencies": {
     "tobi/bar": "*"
   },
-  "scripts": ["index.js"]
+  "scripts": ["index.js"],
+  "styles": ["ferret.css"]
 }

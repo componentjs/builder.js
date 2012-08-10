@@ -3,5 +3,6 @@
   "dependencies": {
     "tobi/baz": "*"
   },
-  "scripts": ["index.js"]
+  "scripts": ["index.js"],
+  "styles": ["bar.css"]
 }
