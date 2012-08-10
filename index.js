@@ -26,7 +26,7 @@ module.exports = Builder;
 function Builder(dir) {
   this.dir = dir;
   this.name = basename(dir);
-  this.ignoring = [];
+  this._ignore = [];
 }
 
 /**
@@ -37,7 +37,25 @@ function Builder(dir) {
  */
 
 Builder.prototype.ignore = function(name){
-  this.ignoring = this.ignoring.concat(name);
+  if (Array.isArray(name)) {
+    for (var i = 0; i < name.length; ++i) {
+      this._ignore.push(name[i].replace('/', '-'));
+    }
+  } else {
+    this._ignore.push(name.replace('/', '-'));
+  }
+};
+
+/**
+ * Check if the builder is ignoring `name`.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+Builder.prototype.ignoring = function(name){
+  return ~this._ignore.indexOf(name);
 };
 
 /**
