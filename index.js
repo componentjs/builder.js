@@ -26,7 +26,19 @@ module.exports = Builder;
 function Builder(dir) {
   this.dir = dir;
   this.name = basename(dir);
+  this.ignoring = [];
 }
+
+/**
+ * Ignore the given component name(s).
+ *
+ * @param {String} name
+ * @api public
+ */
+
+Builder.prototype.ignore = function(name){
+  this.ignoring = this.ignoring.concat(name);
+};
 
 /**
  * Return a resolved path relative to this
