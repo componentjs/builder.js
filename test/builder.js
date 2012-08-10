@@ -90,7 +90,7 @@ describe('Builder', function(){
       builder.ignore('component/emitter');
       builder.build(function(err, res){
         if (err) return done(err);
-        var out = read('test/fixtures/hello.js', 'utf8');
+        var out = read('test/fixtures/hello-ignore.js', 'utf8');
         res.js.should.equal(out);
         done();
       })
