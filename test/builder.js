@@ -23,7 +23,9 @@ describe('Builder', function(){
       var builder = new Builder('test/fixtures/hello');
       builder.buildScripts(function(){});
       builder.on('dependency', function(builder){
-        console.log(builder);
+        builder.dir.should.be.a('string');
+        builder.name.should.equal('component-emitter');
+        done();
       });
     })
   })
@@ -37,6 +39,16 @@ describe('Builder', function(){
         css.should.equal(out);
         done();
       })
+    })
+
+    it('should emit "dependency" events', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.buildStyles(function(){});
+      builder.on('dependency', function(builder){
+        builder.dir.should.be.a('string');
+        builder.name.should.equal('component-emitter');
+        done();
+      });
     })
   })
 
