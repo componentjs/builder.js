@@ -1,6 +1,9 @@
-require.register("hello/foo.js", function(module, exports, require){
-module.exports = 'foo';
+require.register("dialog/index.js", function(module, exports, require){
+module.exports = 'jquery';
 });
-require.register("hello/bar.js", function(module, exports, require){
-module.exports = 'bar';
+require.register("popover/index.js", function(module, exports, require){
+module.exports = 'popover';
+});
+require.register("jquery/index.js", function(module, exports, require){
+module.exports = 'dialog';
 });
