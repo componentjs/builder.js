@@ -1,0 +1,9 @@
+{
+  "name": "boot",
+  "description": "boot component",
+  "version": "0.0.1",
+  "dependencies": {
+    "component/popover": "*",
+    "component/dialog": "*"
+  }
+}

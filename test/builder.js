@@ -19,6 +19,17 @@ describe('Builder', function(){
       })
     })
 
+    it('should buffer components only once', function(done){
+      var builder = new Builder('test/fixtures/boot');
+      builder.buildScripts(function(err, js){
+        if (err) return done(err);
+        console.log(js);
+        // var out = read('test/fixtures/hello.js', 'utf8');
+        // js.should.equal(out);
+        done();
+      })
+    })
+
     it('should emit "dependency" events', function(done){
       var builder = new Builder('test/fixtures/hello');
       builder.buildScripts(function(){});
