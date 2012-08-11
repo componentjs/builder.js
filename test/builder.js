@@ -82,6 +82,16 @@ describe('Builder', function(){
         done();
       })
     })
+
+    it('should load the require.js script', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var out = read('lib/require.js', 'utf8');
+        res.require.should.equal(out);
+        done();
+      })
+    })
   })
 
   describe('.ignore(name)', function(){
