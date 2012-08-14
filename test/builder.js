@@ -87,7 +87,7 @@ describe('Builder', function(){
       var builder = new Builder('test/fixtures/hello');
       builder.build(function(err, res){
         if (err) return done(err);
-        var out = read('lib/require.js', 'utf8');
+        var out = require('component-require');
         res.require.should.equal(out);
         done();
       })
