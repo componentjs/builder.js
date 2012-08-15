@@ -1,0 +1,9 @@
+{
+  "name": "ferret",
+  "description": "ferret model",
+  "version": "0.0.1",
+  "scripts": ["index.js"],
+  "dependencies": {
+    "animal": "*"
+  }
+}

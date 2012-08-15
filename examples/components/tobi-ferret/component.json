@@ -1,9 +1,0 @@
-{
-  "name": "ferret",
-  "dependencies": {
-    "tobi/bar": "*",
-    "loki/foo": "*"
-  },
-  "scripts": ["index.js"],
-  "styles": ["ferret.css"]
-}

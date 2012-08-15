@@ -1,8 +1,0 @@
-{
-  "name": "foo",
-  "dependencies": {
-    "tobi/bar": "*",
-    "tobi/ferret": "*"
-  },
-  "scripts": ["index.js"]
-}

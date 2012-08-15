@@ -1,0 +1,9 @@
+{
+  "name": "user",
+  "description": "user model",
+  "version": "0.0.1",
+  "scripts": ["index.js"],
+  "dependencies": {
+    "component/inherit": "*"
+  }
+}

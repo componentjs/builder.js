@@ -1,0 +1,6 @@
+{
+  "name": "normalize.css",
+  "description": "CSS normalization style",
+  "version": "0.0.1",
+  "styles": ["normalize.css"]
+}
