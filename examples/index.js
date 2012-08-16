@@ -5,7 +5,7 @@
 
 var Builder = require('..');
 
-var builder = new Builder('examples/components/boot');
+var builder = new Builder('examples/components/boot-component');
 
 builder.build(function(err, res){
   if (err) throw err;
