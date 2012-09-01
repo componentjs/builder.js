@@ -1,5 +1,5 @@
 
-0.0.1 / 2010-01-03
+0.0.2 / 2012-09-01 
 ==================
 
-  * Initial release
+  * update component-require
