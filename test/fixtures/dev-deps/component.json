@@ -4,7 +4,7 @@
   "dependencies": {
     "component/emitter": "*"
   },
-  "devDependencies": {
+  "development": {
     "component/jquery": "*"
   }
 }
