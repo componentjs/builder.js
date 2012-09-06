@@ -94,7 +94,7 @@ describe('Builder', function(){
     })
   })
 
-  it('should not build devDependencies by default', function(done){
+  it('should not build development dependencies by default', function(done){
     var builder = new Builder('test/fixtures/dev-deps');
     builder.build(function(err, res){
       if (err) return done(err);
@@ -105,7 +105,7 @@ describe('Builder', function(){
   })
 
   describe('.development()', function(){
-    it('should build devDependencies', function(done){
+    it('should build development dependencies', function(done){
       var builder = new Builder('test/fixtures/dev-deps');
       builder.development();
       builder.build(function(err, res){
