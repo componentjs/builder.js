@@ -1,0 +1,10 @@
+{
+  "name": "popover",
+  "description": "popover component",
+  "dependencies": {
+    "component/emitter": "*"
+  },
+  "devDependencies": {
+    "component/jquery": "*"
+  }
+}

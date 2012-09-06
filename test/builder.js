@@ -94,6 +94,29 @@ describe('Builder', function(){
     })
   })
 
+  it('should not build devDependencies by default', function(done){
+    var builder = new Builder('test/fixtures/dev-deps');
+    builder.build(function(err, res){
+      if (err) return done(err);
+      res.js.should.include('component-emitter/index.js');
+      res.js.should.not.include('component-jquery/index.js');
+      done();
+    })
+  })
+
+  describe('.development()', function(){
+    it('should build devDependencies', function(done){
+      var builder = new Builder('test/fixtures/dev-deps');
+      builder.development();
+      builder.build(function(err, res){
+        if (err) return done(err);
+        res.js.should.include('component-emitter/index.js');
+        res.js.should.include('component-jquery/index.js');
+        done();
+      })
+    })
+  })
+
   describe('.ignore(name)', function(){
     it('should ignore the given component and its deps', function(done){
       var builder = new Builder('test/fixtures/hello');

@@ -19,6 +19,10 @@ var Builder = require('component-builder');
 var builder = new Builder('components/visionmedia-page');
 ```
 
+### Builder#development()
+
+  Include development dependencies.
+
 ### Builder#ignore(name, [type])
 
   Ignore building `name`'s `type`, where `type` is "scripts" or "styles". When
