@@ -94,6 +94,17 @@ describe('Builder', function(){
     })
   })
 
+  it('should build bundled dependencies', function(done){
+    var builder = new Builder('test/fixtures/bundled');
+    builder.build(function(err, res){
+      if (err) return done(err);
+      res.js.should.include('component-popover/index.js');
+      res.js.should.include('component-emitter/index.js');
+      res.js.should.include('component-jquery/index.js');
+      done();
+    })
+  })
+
   it('should not build development dependencies by default', function(done){
     var builder = new Builder('test/fixtures/dev-deps');
     builder.build(function(err, res){

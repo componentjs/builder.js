@@ -1,0 +1,9 @@
+{
+  "name": "hello",
+  "description": "hello world component",
+  "version": "0.0.1",
+  "bundled": [
+    "component/popover",
+    "component/emitter"
+  ]
+}
