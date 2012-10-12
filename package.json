@@ -1,6 +1,6 @@
 {
   "name": "component-builder",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Component build tool",
   "keywords": ["component", "build"],
   "author": "TJ Holowaychuk <tj@vision-media.caa>",
