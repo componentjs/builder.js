@@ -1,0 +1,10 @@
+{
+  "name": "deep3",
+  "description": "deep component for testing .setDefaultLookups()",
+  "dependencies": {
+    "deep2": "*",
+    "component-dialog": "*",
+    "animal": "*"
+  },
+  "scripts": ["index.js"]
+}

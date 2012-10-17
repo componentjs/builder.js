@@ -137,6 +137,17 @@ describe('Builder', function(){
         done();
       })
     })
+    
+    it('can build scripts for dependencies of dependencies...', function(done){
+      var builder = new Builder('test/fixtures/lookups/deep3');
+      builder.setLookups(['test/fixtures', 'examples/components']);
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var out = read('test/fixtures/lookups-deep3-js.js', 'utf8');
+        res.js.should.equal(out);
+        done();
+      })
+    })
   })
 
   describe('.development()', function(){
