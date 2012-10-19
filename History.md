@@ -1,4 +1,10 @@
 
+0.1.0 / 2012-10-19 
+==================
+
+  * add "main" support. Closes #15
+  * update component-require
+
 0.0.7 / 2012-10-16 
 ==================
 
