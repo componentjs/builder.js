@@ -1,0 +1,6 @@
+{
+  "name": "main",
+  "version": "0.0.1",
+  "scripts": ["foo.js", "bar.js"],
+  "main": "foo.js"
+}

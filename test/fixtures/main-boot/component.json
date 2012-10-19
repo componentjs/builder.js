@@ -1,0 +1,9 @@
+{
+  "name": "main-boot",
+  "version": "0.0.1",
+  "scripts": ["boot.js"],
+  "main": "boot.js",
+  "dependencies": {
+    "main": "*"
+  }
+}

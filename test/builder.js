@@ -140,4 +140,14 @@ describe('Builder', function(){
       })
     })
   })
+
+  it('should support "main"', function(done){
+    var builder = new Builder('test/fixtures/main-boot');
+    builder.build(function(err, res){
+      if (err) return done(err);
+      res.js.should.include('require.alias("main-boot/boot.js", "main-boot/index.js")');
+      res.js.should.include('require.alias("main/foo.js", "main-boot/deps/main/index.js")');
+      done();
+    })
+  })
 })
