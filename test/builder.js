@@ -94,7 +94,7 @@ describe('Builder', function(){
     })
   })
 
-  it('should build bundled dependencies', function(done){
+  it('should build local dependencies', function(done){
     var builder = new Builder('test/fixtures/bundled');
     builder.build(function(err, res){
       if (err) return done(err);
