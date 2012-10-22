@@ -115,6 +115,41 @@ describe('Builder', function(){
     })
   })
 
+  describe('.addLookup(path)', function(){
+    it('should build dependencies from a default location string', function(done){
+      var builder = new Builder('test/fixtures/lookups/deep');
+      builder.addLookup('test/fixtures');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var out = read('test/fixtures/lookups-deep-js.js', 'utf8');
+        res.js.should.equal(out);
+        done();
+      })
+    })
+
+    it('should build dependencies from array of locations', function(done){
+      var builder = new Builder('test/fixtures/lookups/deep2');
+      builder.addLookup(['test/fixtures', 'examples/components']);
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var out = read('test/fixtures/lookups-deep2-js.js', 'utf8');
+        res.js.should.equal(out);
+        done();
+      })
+    })
+    
+    it('can build scripts for dependencies of dependencies...', function(done){
+      var builder = new Builder('test/fixtures/lookups/deep3');
+      builder.addLookup(['test/fixtures', 'examples/components']);
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var out = read('test/fixtures/lookups-deep3-js.js', 'utf8');
+        res.js.should.equal(out);
+        done();
+      })
+    })
+  })
+
   describe('.development()', function(){
     it('should build development dependencies', function(done){
       var builder = new Builder('test/fixtures/dev-deps');
