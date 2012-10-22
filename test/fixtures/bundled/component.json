@@ -2,7 +2,7 @@
   "name": "hello",
   "description": "hello world component",
   "version": "0.0.1",
-  "bundled": [
+  "local": [
     "component/popover",
     "component/emitter"
   ]
