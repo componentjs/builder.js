@@ -104,6 +104,14 @@ describe('Builder', function(){
     })
   })
 
+  it('should error on failed dep lookup', function(done){
+    var builder = new Builder('test/fixtures/bundled');
+    builder.build(function(err, res){
+      err.message.should.equal('failed to lookup dependency "foo"');
+      done();
+    })
+  })
+
   it('should not build development dependencies by default', function(done){
     var builder = new Builder('test/fixtures/dev-deps');
     builder.build(function(err, res){
