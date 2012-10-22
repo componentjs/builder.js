@@ -3,7 +3,6 @@
   "description": "hello world component",
   "version": "0.0.1",
   "local": [
-    "component/popover",
-    "component/emitter"
+    "foo"
   ]
 }
