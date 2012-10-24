@@ -1,5 +1,5 @@
 {
-  "name": "main-boot",
+  "name": "boot",
   "version": "0.0.1",
   "scripts": ["boot.js"],
   "main": "boot.js",
