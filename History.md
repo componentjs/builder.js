@@ -1,4 +1,11 @@
 
+0.2.1 / 2012-10-24 
+==================
+
+  * add better lookup failure error
+  * fix incorrect root main alias. Closes #22
+  * rename "bundled" to "local"
+
 0.2.0 / 2012-10-22 
 ==================
 
