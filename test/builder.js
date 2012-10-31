@@ -107,7 +107,7 @@ describe('Builder', function(){
   it('should error on failed dep lookup', function(done){
     var builder = new Builder('test/fixtures/bundled');
     builder.build(function(err, res){
-      err.message.should.equal('failed to lookup dependency "foo"');
+      err.message.should.equal('failed to lookup "bundled"\'s dependency "foo"');
       done();
     })
   })
