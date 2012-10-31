@@ -1,4 +1,10 @@
 
+0.3.0 / 2012-10-31 
+==================
+
+  * add better lookup failure message
+  * fix lookup paths for use with `.local`
+
 0.2.1 / 2012-10-24 
 ==================
 
