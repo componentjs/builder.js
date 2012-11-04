@@ -1,0 +1,6 @@
+{
+  "name": "assets-parent",
+  "dependencies": {
+    "assets": "*"
+  }
+}

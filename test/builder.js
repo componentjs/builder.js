@@ -4,7 +4,13 @@
  */
 
 var Builder = require('..')
+  , assert = require('better-assert')
+  , exec = require('child_process').exec
+  , path = require('path')
+  , resolve = path.resolve
   , fs = require('fs')
+  , realpath = fs.realpathSync
+  , exists = fs.existsSync
   , read = fs.readFileSync;
 
 describe('Builder', function(){
@@ -68,6 +74,10 @@ describe('Builder', function(){
   })
 
   describe('.build(fn)', function(){
+    beforeEach(function(done){
+      exec('rm -fr /tmp/build', done);
+    })
+
     it('should build js', function(done){
       var builder = new Builder('test/fixtures/hello');
       builder.addLookup('test/fixtures');
@@ -99,6 +109,51 @@ describe('Builder', function(){
         res.require.should.equal(out);
         done();
       })
+    })
+
+    it('should symlink .images', function(done){
+      var builder = new Builder('test/fixtures/assets');
+      builder.addLookup('test/fixtures');
+      builder.copyAssetsTo('/tmp/build');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        assert(2 == res.images.length);
+        assert('/tmp/build/assets/images/logo.png' == res.images[0]);
+        assert('/tmp/build/assets/images/maru.jpeg' == res.images[1]);
+        assert(exists('/tmp/build/assets/images/maru.jpeg'));
+        assert(exists('/tmp/build/assets/images/logo.png'));
+        done();
+      });
+    })
+
+    it('should symlink .files', function(done){
+      var builder = new Builder('test/fixtures/assets-parent');
+      builder.addLookup('test/fixtures');
+      builder.copyAssetsTo('/tmp/build');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        assert(1 == res.files.length);
+        assert('/tmp/build/assets/some.txt' == res.files[0]);
+        var real = realpath('/tmp/build/assets/some.txt');
+        var path = resolve('test/fixtures/assets/some.txt');
+        assert(real == path);
+        assert(exists('/tmp/build/assets/some.txt'));
+        done();
+      });
+    })
+
+    it('should rewrite css urls', function(done){
+      var builder = new Builder('test/fixtures/assets-parent');
+      builder.addLookup('test/fixtures');
+      builder.copyAssetsTo('/tmp/build');
+      builder.prefixUrls('build');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        res.css.should.include('url("build/assets/images/logo.png")');
+        res.css.should.include('url("build/assets/images/maru.jpeg")');
+        res.css.should.include('url("http://example.com/images/manny.png")');
+        done();
+      });
     })
   })
 

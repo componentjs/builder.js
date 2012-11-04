@@ -2,12 +2,18 @@
   "name": "component-builder",
   "version": "0.3.0",
   "description": "Component build tool",
-  "keywords": ["component", "build"],
+  "keywords": [
+    "component",
+    "build"
+  ],
   "author": "TJ Holowaychuk <tj@vision-media.caa>",
   "dependencies": {
     "component-require": "0.1.0",
     "batch": "0.1.1",
-    "debug": "*"
+    "rework": "0.7.0",
+    "mkdirp": "0.3.4",
+    "debug": "*",
+    "better-assert": "~0.1.0"
   },
   "devDependencies": {
     "mocha": "*",

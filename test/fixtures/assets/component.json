@@ -1,0 +1,14 @@
+{
+  "name": "assets",
+  "description": "a bunch of assets",
+  "images": [
+    "images/logo.png",
+    "images/maru.jpeg"
+  ],
+  "files": [
+    "some.txt"
+  ],
+  "styles": [
+    "style.css"
+  ]
+}

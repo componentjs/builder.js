@@ -1,0 +1,13 @@
+.logo {
+  background: url(images/logo.png);
+}
+
+#maru {
+  width: 500px;
+  height: 500px;
+  background: url(images/maru.jpeg) no-repeat;
+}
+
+#manny {
+  background: url(http://example.com/images/manny.png);
+}
