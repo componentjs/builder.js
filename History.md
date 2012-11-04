@@ -1,4 +1,10 @@
 
+0.4.0 / 2012-11-04 
+==================
+
+  * add `url()` rewriting. Closes #28
+  * add asset symlinking for `.files`, `.images`, and `.fonts`
+
 0.3.0 / 2012-10-31 
 ==================
 
