@@ -256,7 +256,6 @@ describe('Builder', function(){
     builder.build(function(err, res){
       if (err) return done(err);
       res.js.should.include('require.alias("boot/boot.js", "boot/index.js")');
-      res.js.should.include('require.alias("main/foo.js", "main/index.js")');
       res.js.should.include('require.alias("main/foo.js", "boot/deps/main/index.js")');
       done();
     })
