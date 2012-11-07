@@ -1,4 +1,9 @@
 
+0.4.2 / 2012-11-06 
+==================
+
+  * Revert "add root 'main' alias for all components. Closes #26"
+
 0.4.1 / 2012-11-06 
 ==================
 
