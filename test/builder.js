@@ -117,11 +117,13 @@ describe('Builder', function(){
       builder.copyAssetsTo('/tmp/build');
       builder.build(function(err, res){
         if (err) return done(err);
-        assert(2 == res.images.length);
+        assert(3 == res.images.length);
         assert('/tmp/build/assets/images/logo.png' == res.images[0]);
         assert('/tmp/build/assets/images/maru.jpeg' == res.images[1]);
+        assert('/tmp/build/assets/images/npm.png' == res.images[2]);
         assert(exists('/tmp/build/assets/images/maru.jpeg'));
         assert(exists('/tmp/build/assets/images/logo.png'));
+        assert(exists('/tmp/build/assets/images/npm.png'));
         done();
       });
     })
@@ -151,6 +153,7 @@ describe('Builder', function(){
         if (err) return done(err);
         res.css.should.include('url("build/assets/images/logo.png")');
         res.css.should.include('url("build/assets/images/maru.jpeg")');
+        res.css.should.include('url("build/assets/images/npm.png")');
         res.css.should.include('url("http://example.com/images/manny.png")');
         done();
       });
