@@ -11,3 +11,7 @@
 #manny {
   background: url(http://example.com/images/manny.png);
 }
+
+#bob {
+  background-image: url(data:image/png;base64,PNG DATA HERE)
+}
