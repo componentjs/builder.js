@@ -239,6 +239,20 @@ describe('Builder', function(){
     })
   })
 
+  describe('.addSourceURLs()', function() {
+    it('should add source urls to the build', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.addLookup('test/fixtures');
+      builder.addSourceURLs();
+      builder.buildScripts(function(err, js){
+        if (err) return done(err);
+        var out = read('test/fixtures/hello-sourceurl-js.js', 'utf8');
+        js.should.equal(out);
+        done();
+      })
+    })
+  });
+
   describe('.ignore(name)', function(){
     it('should ignore the given component and its deps', function(done){
       var builder = new Builder('test/fixtures/hello');
