@@ -1,4 +1,10 @@
 
+0.5.0 / 2012-12-04 
+==================
+
+  * add source url support. Closes #39
+  * fix url rewriting of css in sub-directories
+
 0.4.2 / 2012-11-06 
 ==================
 
