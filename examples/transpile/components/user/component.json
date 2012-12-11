@@ -1,0 +1,5 @@
+{
+  "name": "user",
+  "scripts": ["index.js"],
+  "templates": ["user.jade"]
+}

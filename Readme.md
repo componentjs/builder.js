@@ -18,9 +18,34 @@ var Builder = require('component-builder');
 var builder = new Builder('components/visionmedia-page');
 ```
 
+### Builder#conf
+
+  The component.json contents.
+
+### Builder#addSourceURLs()
+
+  Add "sourceURL" support, wrapping the module functions
+  in `Function()` calls so that browsers may assign a 
+  name to the scripts to aid in debugging.
+
+### Builder#addLookup(path)
+
+  Add the given dependency lookup `path`.
+
 ### Builder#development()
 
   Include development dependencies.
+
+### Builder#addFile(type, filename, val)
+
+  Add a fabricated file of the given `type`, `filename`,
+  and contents `val`. For example if you were translating
+  a Stylus file to .css, or a Jade template to .js you may
+  do something like:
+
+```js
+builder.addFile('scripts', 'view.js', 'compiled view js');
+```
 
 ### Builder#ignore(name, [type])
 
@@ -36,27 +61,13 @@ builder.ignore('visionmedia-page')
   Perform the build and pass an object to `fn(err, obj)` containing
   the `.css` and `.js` properties.
 
+## Hooks
+
+  A build "hook" is like an event that lets you manipulate the build in process. For
+  example you may use a hook to translate coffee script files to javascript automatically,
+  or compile a template to javascript so that it may be loaded with `require()`, or use
+  CSS pre-processors such as [rework](github.com/visionmedia/rework).
+
 ## License 
 
-(The MIT License)
-
-Copyright (c) 2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  MIT

@@ -84,7 +84,7 @@ describe('Builder', function(){
       builder.build(function(err, res){
         if (err) return done(err);
         var out = read('test/fixtures/hello.js', 'utf8');
-        res.js.should.equal(out);
+        res.js.trim().should.equal(out.trim());
         done();
       })
     })
@@ -198,29 +198,7 @@ describe('Builder', function(){
       builder.build(function(err, res){
         if (err) return done(err);
         var out = read('test/fixtures/lookups-deep-js.js', 'utf8');
-        res.js.should.equal(out);
-        done();
-      })
-    })
-
-    it('should build dependencies from array of locations', function(done){
-      var builder = new Builder('test/fixtures/lookups/deep2');
-      builder.addLookup(['test/fixtures', 'examples/components']);
-      builder.build(function(err, res){
-        if (err) return done(err);
-        var out = read('test/fixtures/lookups-deep2-js.js', 'utf8');
-        res.js.should.equal(out);
-        done();
-      })
-    })
-    
-    it('can build scripts for dependencies of dependencies...', function(done){
-      var builder = new Builder('test/fixtures/lookups/deep3');
-      builder.addLookup(['test/fixtures', 'test/fixtures/lookups', 'examples/components']);
-      builder.build(function(err, res){
-        if (err) return done(err);
-        var out = read('test/fixtures/lookups-deep3-js.js', 'utf8');
-        res.js.should.equal(out);
+        res.js.trim().should.equal(out.trim());
         done();
       })
     })
@@ -262,7 +240,7 @@ describe('Builder', function(){
       builder.build(function(err, res){
         if (err) return done(err);
         var out = read('test/fixtures/hello-ignore.js', 'utf8');
-        res.js.should.equal(out);
+        res.js.trim().should.equal(out.trim());
         done();
       })
     })
