@@ -155,6 +155,7 @@ describe('Builder', function(){
         res.css.should.include('url("build/assets/images/maru.jpeg")');
         res.css.should.include('url("build/assets/images/npm.png")');
         res.css.should.include('url("http://example.com/images/manny.png")');
+        res.css.should.include('url("/public/images/foo.png")')
         res.css.should.include('url("data:image/png;base64,PNG DATA HERE")');
         done();
       });
