@@ -15,3 +15,7 @@
 #bob {
   background-image: url(data:image/png;base64,PNG DATA HERE)
 }
+
+#bar {
+  background-image: url(/public/images/foo.png)
+}
