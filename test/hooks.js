@@ -24,7 +24,8 @@ function ejsPlugin(builder) {
       var str = fs.readFileSync(path, 'utf8');
       var fn = ejs.compile(str, { client: true, compileDebug: false });
       var js = 'module.exports = ' + fn;
-      pkg.addFile('scripts', 'user.js', js);
+      var name = file.split('.')[0] + '.js';
+      pkg.addFile('scripts', name, js);
     });
   })
 }
@@ -44,12 +45,25 @@ describe('Builder hooks', function(){
         done();
       })
     })
-    
+
+    it('should allow injection of fabricated files from purely compiled components', function(done) {
+      var builder = new Builder('test/fixtures/template-plugin-pure');
+      builder.use(ejsPlugin);
+
+      builder.build(function(err, res){
+        if (err) return done(err);
+        var js = res.require + res.js + 'require("templates")';
+        var ret = vm.runInNewContext(js);
+        ret({user: {name: 'Tobi'}}).should.equal('<p>Hello Tobi</p>');
+        done();
+      })
+    })
+
     it('should work with dependencies', function(done){
       var builder = new Builder('test/fixtures/template-plugin-parent');
       builder.addLookup('test/fixtures');
       builder.use(ejsPlugin);
-      
+
       builder.build(function(err, res){
         if (err) return done(err);
         var js = res.require + res.js + 'require("parent")';
