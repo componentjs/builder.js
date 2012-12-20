@@ -1,9 +1,9 @@
 emitter {
-
+  
 }
 foo {
-  bar: 'baz'
+  bar: 'baz';
 }
 bar {
-  baz: 'raz'
+  baz: 'raz';
 }
