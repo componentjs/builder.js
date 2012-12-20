@@ -1,4 +1,11 @@
 
+0.5.2 / 2012-12-20 
+==================
+
+  * add initial plugin support
+  * fix: do not rewrite urls relative to host (closes #45)
+  * fix: .addFile(type) should always add files to conf[type]
+
 0.5.1 / 2012-12-04 
 ==================
 
