@@ -10,7 +10,7 @@
   "dependencies": {
     "component-require": "0.1.0",
     "batch": "0.2.1",
-    "rework": "0.9.1",
+    "rework": "0.10.2",
     "mkdirp": "0.3.4",
     "debug": "*",
     "better-assert": "~0.1.0"
