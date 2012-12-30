@@ -21,7 +21,7 @@ describe('Builder', function(){
       builder.buildScripts(function(err, js){
         if (err) return done(err);
         var out = read('test/fixtures/hello-js.js', 'utf8');
-        js.should.equal(out);
+        js.trim().should.equal(out.trim());
         done();
       })
     })
@@ -32,7 +32,7 @@ describe('Builder', function(){
       builder.buildScripts(function(err, js){
         if (err) return done(err);
         var out = read('test/fixtures/ignore.js', 'utf8');
-        js.should.equal(out);
+        js.trim().should.equal(out.trim());
         done();
       })
     })
@@ -227,7 +227,7 @@ describe('Builder', function(){
       builder.buildScripts(function(err, js){
         if (err) return done(err);
         var out = read('test/fixtures/hello-sourceurl-js.js', 'utf8');
-        js.should.equal(out);
+        js.trim().should.equal(out.trim());
         done();
       })
     })
