@@ -1,4 +1,10 @@
 
+0.5.5 / 2012-12-30 
+==================
+
+  * add lookup and readfile caching mechanisms. Closes #50
+  * update require
+
 0.5.4 / 2012-12-20 
 ==================
 
