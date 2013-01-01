@@ -39,10 +39,10 @@ function compileJade(builder) {
   });
 
   // hook into the "before scripts" event
-  builder.hook('before scripts', function(pkg, callback){
+  builder.hook('before scripts', function(pkg, fn){
     // check if we have .templates in component.json
     var tmpls = pkg.conf.templates;
-    if (!tmpls) return callback();
+    if (!tmpls) return fn();
 
     // translate templates
     tmpls.forEach(function(file){
@@ -60,6 +60,7 @@ function compileJade(builder) {
       file = path.basename(file, '.jade') + '.js';
       pkg.addFile('scripts', file, 'module.exports = ' + fn);
     });
-    callback();
+
+    fn();
   });
 }
