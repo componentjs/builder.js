@@ -37,28 +37,29 @@ function compileJade(builder) {
     // to be global, but .addFile() wraps it in a commonjs module
     builder.append('require("user/jade.runtime")');
   });
-  
+
   // hook into the "before scripts" event
-  builder.hook('before scripts', function(pkg){
+  builder.hook('before scripts', function(pkg, callback){
     // check if we have .templates in component.json
     var tmpls = pkg.conf.templates;
-    if (!tmpls) return;
-    
+    if (!tmpls) return callback();
+
     // translate templates
     tmpls.forEach(function(file){
       // only .jade files
       var ext = path.extname(file);
       if ('.jade' != ext);
-      
+
       // read the file
       file = pkg.path(file);
       var str = fs.readFileSync(file, 'utf8');
       var fn = jade.compile(str, { client: true, compileDebug: false });
-      
+
       // add the fabricated script which
       // exports the compiled jade template function
       file = path.basename(file, '.jade') + '.js';
       pkg.addFile('scripts', file, 'module.exports = ' + fn);
     });
+    callback();
   });
 }
