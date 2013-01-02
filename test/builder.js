@@ -124,7 +124,6 @@ describe('Builder', function(){
           b.js.should.equal(a.js);
           b.css.should.equal(a.css);
 
-
           var builder = new Builder('test/fixtures/hello');
           builder.addLookup('test/fixtures');
           builder.build(function(err, c){
