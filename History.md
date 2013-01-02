@@ -1,4 +1,9 @@
 
+0.6.1 / 2013-01-02 
+==================
+
+  * fix root-level main support for all components. Closes #53
+
 0.6.0 / 2013-01-01 
 ==================
 
