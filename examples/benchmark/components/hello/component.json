@@ -1,0 +1,5 @@
+{
+  "name": "hello",
+  "scripts": ["index.js"],
+  "local": ["world"]
+}
