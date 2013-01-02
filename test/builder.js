@@ -111,6 +111,32 @@ describe('Builder', function(){
       })
     })
 
+    it('should be idempotent', function(done){
+      var builder = new Builder('test/fixtures/hello');
+      builder.addLookup('test/fixtures');
+      builder.build(function(err, a){
+        if (err) return done(err);
+
+        var builder = new Builder('test/fixtures/hello');
+        builder.addLookup('test/fixtures');
+        builder.build(function(err, b){
+          if (err) return done(err);
+          b.js.should.equal(a.js);
+          b.css.should.equal(a.css);
+
+
+          var builder = new Builder('test/fixtures/hello');
+          builder.addLookup('test/fixtures');
+          builder.build(function(err, c){
+            if (err) return done(err);
+            c.js.should.equal(a.js);
+            c.css.should.equal(a.css);
+            done();
+          })
+        })
+      })
+    })
+
     it('should symlink .images', function(done){
       var builder = new Builder('test/fixtures/assets');
       builder.addLookup('test/fixtures');
