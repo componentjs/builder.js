@@ -43,7 +43,7 @@ describe('Builder', function(){
       builder.buildScripts(function(){});
       builder.on('dependency', function(builder){
         builder.dir.should.be.a('string');
-        builder.name.should.equal('component-emitter');
+        builder.basename.should.equal('component-emitter');
         done();
       });
     })
@@ -67,7 +67,7 @@ describe('Builder', function(){
       builder.buildStyles(function(){});
       builder.on('dependency', function(builder){
         builder.dir.should.be.a('string');
-        builder.name.should.equal('component-emitter');
+        builder.basename.should.equal('component-emitter');
         done();
       });
     })
