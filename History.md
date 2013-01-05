@@ -1,4 +1,12 @@
 
+0.6.2 / 2013-01-04 
+==================
+
+  * add .removeFile(type, filename)
+  * add .alias() helper
+  * rename .name to .basename
+  * refactor .lookup() to use fs.existsSync
+
 0.6.1 / 2013-01-02 
 ==================
 
