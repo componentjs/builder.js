@@ -169,6 +169,45 @@ describe('Builder', function(){
       });
     })
 
+    it('should copy .images in COPY=true mode', function(done){
+      process.env.COPY = true;
+      var builder = new Builder('test/fixtures/assets');
+      builder.addLookup('test/fixtures');
+      builder.copyAssetsTo('/tmp/build');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        assert(3 == res.images.length);
+        assert('/tmp/build/assets/images/logo.png' == res.images[0]);
+        assert('/tmp/build/assets/images/maru.jpeg' == res.images[1]);
+        assert('/tmp/build/assets/images/npm.png' == res.images[2]);
+        assert(exists('/tmp/build/assets/images/maru.jpeg'));
+        assert(exists('/tmp/build/assets/images/logo.png'));
+        assert(exists('/tmp/build/assets/images/npm.png'));
+        // images aren't symlinks
+        fs.lstat('/tmp/build/assets/images/npm.png', function(err, stats) {
+          return assert(stats.isSymbolicLink() == false);
+        });
+        done();
+      });
+    })
+
+    it('should copy .files in COPY=true mode', function(done){
+      var builder = new Builder('test/fixtures/assets-parent');
+      builder.addLookup('test/fixtures');
+      builder.copyAssetsTo('/tmp/build');
+      builder.build(function(err, res){
+        if (err) return done(err);
+        assert(1 == res.files.length);
+        assert('/tmp/build/assets/some.txt' == res.files[0]);
+        assert(exists('/tmp/build/assets/some.txt'));
+        // files aren't symlinks
+        fs.lstat('/tmp/build/assets/some.txt', function(err, stats) {
+          return assert(stats.isSymbolicLink() == false);
+        });
+        done();
+      });
+    })
+
     it('should rewrite css urls', function(done){
       var builder = new Builder('test/fixtures/assets-parent');
       builder.addLookup('test/fixtures');
