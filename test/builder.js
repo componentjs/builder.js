@@ -169,9 +169,9 @@ describe('Builder', function(){
       });
     })
 
-    it('should copy .images in COPY=true mode', function(done){
-      process.env.COPY = true;
+    it('should copy .images in copyFiles mode', function(done){
       var builder = new Builder('test/fixtures/assets');
+      builder.copyFiles();
       builder.addLookup('test/fixtures');
       builder.copyAssetsTo('/tmp/build');
       builder.build(function(err, res){
@@ -185,14 +185,15 @@ describe('Builder', function(){
         assert(exists('/tmp/build/assets/images/npm.png'));
         // images aren't symlinks
         fs.lstat('/tmp/build/assets/images/npm.png', function(err, stats) {
-          return assert(stats.isSymbolicLink() == false);
+          assert(stats.isSymbolicLink() == false);
+          done();
         });
-        done();
       });
     })
 
-    it('should copy .files in COPY=true mode', function(done){
+    it('should copy .files in copyFiles mode', function(done){
       var builder = new Builder('test/fixtures/assets-parent');
+      builder.copyFiles();
       builder.addLookup('test/fixtures');
       builder.copyAssetsTo('/tmp/build');
       builder.build(function(err, res){
@@ -202,9 +203,9 @@ describe('Builder', function(){
         assert(exists('/tmp/build/assets/some.txt'));
         // files aren't symlinks
         fs.lstat('/tmp/build/assets/some.txt', function(err, stats) {
-          return assert(stats.isSymbolicLink() == false);
+          assert(stats.isSymbolicLink() == false);
+          done();
         });
-        done();
       });
     })
 
