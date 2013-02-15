@@ -1,4 +1,9 @@
 
+0.6.3 / 2013-02-15 
+==================
+
+  * add configuration to copy files instead of symlink
+
 0.6.2 / 2013-01-04 
 ==================
 
