@@ -4,7 +4,7 @@
  */
 
 var Builder = require('..')
-  , Batch  = require('batch')
+  , Batch = require('batch')
   , assert = require('better-assert')
   , exec = require('child_process').exec
   , path = require('path')
