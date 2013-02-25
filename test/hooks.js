@@ -73,5 +73,18 @@ describe('Builder hooks', function(){
         done();
       })
     })
+
+    it('should catch hook errors', function (done) {
+      var builder = new Builder('test/fixtures/template-plugin');
+      builder.addLookup('test/fixtures');
+      builder.hook('before scripts', function (pkg, cb) {
+        cb(new Error('hook error'));
+      });
+
+      builder.build(function(err, res){
+        err.message.should.equal('hook error');
+        done();
+      })
+    })
   })
 })
