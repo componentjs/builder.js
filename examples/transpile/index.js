@@ -1,4 +1,3 @@
-
 // first:
 // $ npm install jade
 
@@ -48,7 +47,7 @@ function compileJade(builder) {
     tmpls.forEach(function(file){
       // only .jade files
       var ext = path.extname(file);
-      if ('.jade' != ext);
+      if ('.jade' != ext) return;
 
       // read the file
       file = pkg.path(file);
