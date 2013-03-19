@@ -1,4 +1,10 @@
 
+0.6.4 / 2013-03-19 
+==================
+
+  * fix: default urlPrefix to empty string. Fixes #75
+  * fix hook error handling in .buildType()
+
 0.6.3 / 2013-02-15 
 ==================
 
