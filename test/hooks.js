@@ -4,6 +4,7 @@
  */
 
 var Builder = require('..')
+  , Batch = require('batch')
   , assert = require('better-assert')
   , exec = require('child_process').exec
   , path = require('path')
@@ -18,16 +19,21 @@ var Builder = require('..')
 function ejsPlugin(builder) {
   builder.hook('before scripts', function(pkg, fn){
     var tmpls = pkg.conf.templates;
+    var batch = new Batch;
     if (!tmpls) return fn();
     tmpls.forEach(function(file){
-      var path = pkg.path(file);
-      var str = fs.readFileSync(path, 'utf8');
-      var fn = ejs.compile(str, { client: true, compileDebug: false });
-      var js = 'module.exports = ' + fn;
-      var name = file.split('.')[0] + '.js';
-      pkg.addFile('scripts', name, js);
+      batch.push(function (done) {
+        var path = pkg.path(file);
+        fs.readFile(path, 'utf8', function (err, str) {
+          var fn = ejs.compile(str, { client: true, compileDebug: false });
+          var js = 'module.exports = ' + fn;
+          var name = file.split('.')[0] + '.js';
+          pkg.addFile('scripts', name, js);
+          done();
+        });
+      });
     });
-    fn();
+    batch.end(fn);
   })
 }
 
