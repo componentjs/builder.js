@@ -1,4 +1,9 @@
 
+0.6.5 / 2013-03-29 
+==================
+
+  * fix: json to return self.conf to avoid race condition
+
 0.6.4 / 2013-03-19 
 ==================
 
