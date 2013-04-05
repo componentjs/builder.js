@@ -30,7 +30,7 @@ var builder = new Builder('components/visionmedia-page');
 
 ### Builder#addLookup(path)
 
-  Add the given dependency lookup `path`.
+  Append the given dependency lookup `path`.
 
 ### Builder#development()
 
