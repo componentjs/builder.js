@@ -8,7 +8,7 @@ builder.addLookup('examples/simple/components');
 
 builder.build(function(err, res){
   if (err) throw err;
-  
+
   // res.require is separate from the js generated
   // by the components themselves, and must be added.
   // this separation allows for future lazy-loading

@@ -40,12 +40,12 @@ describe('Builder', function(){
     it('should emit "dependency" events', function(done){
       var builder = new Builder('test/fixtures/hello');
       builder.addLookup('test/fixtures');
-      builder.buildScripts(function(){});
       builder.on('dependency', function(builder){
         builder.dir.should.be.a('string');
         builder.basename.should.equal('component-emitter');
         done();
       });
+      builder.buildScripts(function(){});
     })
   })
 
@@ -64,12 +64,12 @@ describe('Builder', function(){
     it('should emit "dependency" events', function(done){
       var builder = new Builder('test/fixtures/hello');
       builder.addLookup('test/fixtures');
-      builder.buildStyles(function(){});
       builder.on('dependency', function(builder){
         builder.dir.should.be.a('string');
         builder.basename.should.equal('component-emitter');
         done();
       });
+      builder.buildStyles(function(){});
     })
   })
 

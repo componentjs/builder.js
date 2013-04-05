@@ -28,14 +28,12 @@ function compileJade(builder) {
   // templates to work. Since we invoke
   // this here on builder it is NOT applied
   // recursively, thus adding the script only once
-  builder.on('config', function(){
-    var runtime = fs.readFileSync(__dirname + '/runtime.js', 'utf8');
-    builder.addFile('scripts', 'jade.runtime.js', runtime);
-    // add arbitrary js to auto-invoke require("user/jade.runtime"),
-    // this is necessary because Jade expects the "jade" variable
-    // to be global, but .addFile() wraps it in a commonjs module
-    builder.append('require("user/jade.runtime")');
-  });
+  var runtime = fs.readFileSync(__dirname + '/runtime.js', 'utf8');
+  builder.addFile('scripts', 'jade.runtime.js', runtime);
+  // add arbitrary js to auto-invoke require("user/jade.runtime"),
+  // this is necessary because Jade expects the "jade" variable
+  // to be global, but .addFile() wraps it in a commonjs module
+  builder.append('require("user/jade.runtime")');
 
   // hook into the "before scripts" event
   builder.hook('before scripts', function(pkg, fn){
