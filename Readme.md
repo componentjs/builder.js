@@ -68,6 +68,32 @@ builder.ignore('visionmedia-page')
   or compile a template to javascript so that it may be loaded with `require()`, or use
   CSS pre-processors such as [rework](github.com/visionmedia/rework).
 
+## Examples
+
+### Basic build
+
+  The follow demonstrates the most basic build you can possible do using
+  this component builder implementation. A root component directory is
+  passed to `new Builder`, followed by a `.build()` call which then responds
+  with a `res` object containing the followign properties:
+
+  - `.require` the require implementation script
+  - `.js` compiled javascript
+  - `.css` compiled css
+
+```js
+var builder = new Builder(__dirname + '/components/hello');
+
+builder.addLookup('examples/simple/components');
+
+builder.build(function(err, res){
+  if (err) throw err;
+  console.log(res.require + res.js);
+  console.log(res.css);
+});
+
+```
+
 ## License
 
   MIT
