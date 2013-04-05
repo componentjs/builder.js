@@ -89,7 +89,19 @@ builder.build(function(err, res){
   console.log(res.require + res.js);
   console.log(res.css);
 });
+```
 
+### Lookup paths
+
+  In the previous example all the application's private components live in `./lib`,
+  thus if you want to specify dependencies without a leading `"lib/"` a lookup path
+  should be created with `.addLookup()`:
+
+```js
+var builder = new Builder('lib/boot');
+
+builder.addLookup('lib');
+...
 ```
 
 ## License
