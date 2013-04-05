@@ -38,7 +38,7 @@ function compileJade(builder) {
   // hook into the "before scripts" event
   builder.hook('before scripts', function(pkg, fn){
     // check if we have .templates in component.json
-    var tmpls = pkg.conf.templates;
+    var tmpls = pkg.config.templates;
     if (!tmpls) return fn();
 
     // translate templates

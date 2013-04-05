@@ -18,7 +18,7 @@ var Builder = require('..')
 
 function ejsPlugin(builder) {
   builder.hook('before scripts', function(pkg, fn){
-    var tmpls = pkg.conf.templates;
+    var tmpls = pkg.config.templates;
     var batch = new Batch;
     if (!tmpls) return fn();
     tmpls.forEach(function(file){

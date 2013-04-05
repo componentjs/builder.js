@@ -18,14 +18,14 @@ var Builder = require('component-builder');
 var builder = new Builder('components/visionmedia-page');
 ```
 
-### Builder#conf
+### Builder#config
 
-  The component.json contents.
+  The component's component.json contents as an object.
 
 ### Builder#addSourceURLs()
 
   Add "sourceURL" support, wrapping the module functions
-  in `Function()` calls so that browsers may assign a 
+  in `Function()` calls so that browsers may assign a
   name to the scripts to aid in debugging.
 
 ### Builder#addLookup(path)
@@ -68,6 +68,6 @@ builder.ignore('visionmedia-page')
   or compile a template to javascript so that it may be loaded with `require()`, or use
   CSS pre-processors such as [rework](github.com/visionmedia/rework).
 
-## License 
+## License
 
   MIT
