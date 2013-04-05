@@ -1,0 +1,6 @@
+{
+  "name": "one",
+  "paths": ["lib"],
+  "local": ["two"],
+  "scripts": ["index.js"]
+}

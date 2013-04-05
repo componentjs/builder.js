@@ -1,0 +1,6 @@
+{
+  "name": "nested",
+  "paths": ["lib"],
+  "local": ["one"],
+  "scripts": ["index.js"]
+}

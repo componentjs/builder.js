@@ -9,6 +9,7 @@ var Builder = require('..')
   , path = require('path')
   , resolve = path.resolve
   , fs = require('fs')
+  , vm = require('vm')
   , realpath = fs.realpathSync
   , exists = fs.existsSync
   , read = fs.readFileSync;
@@ -309,6 +310,17 @@ describe('Builder', function(){
         res.js.trim().should.equal(out.trim());
         done();
       })
+    })
+  })
+
+  it.only('should support nested "paths"', function(done){
+    var builder = new Builder('test/fixtures/nested');
+    builder.build(function(err, res){
+      if (err) return done(err);
+      var js = res.require + res.js + ';require("nested")';
+      var ret = vm.runInNewContext(js);
+      assert('two' == ret);
+      done();
     })
   })
 
