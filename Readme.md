@@ -82,9 +82,7 @@ builder.ignore('visionmedia-page')
   - `.css` compiled css
 
 ```js
-var builder = new Builder(__dirname + '/components/hello');
-
-builder.addLookup('examples/simple/components');
+var builder = new Builder('lib/boot');
 
 builder.build(function(err, res){
   if (err) throw err;
