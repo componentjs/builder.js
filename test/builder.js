@@ -313,7 +313,7 @@ describe('Builder', function(){
     })
   })
 
-  it.only('should support nested "paths"', function(done){
+  it('should support nested "paths"', function(done){
     var builder = new Builder('test/fixtures/nested');
     builder.build(function(err, res){
       if (err) return done(err);
