@@ -257,6 +257,16 @@ describe('Builder', function(){
     })
   })
 
+  it('should add implicit ./components dir to lookup paths', function(done){
+    var builder = new Builder('test/fixtures/app');
+    builder.build(function(err, res){
+      if (err) return done(err);
+      console.log(res.js);
+      // res.js.should.include('component-emitter/index.js');
+      done();
+    })
+  })
+
   describe('.addLookup(path)', function(){
     it('should add a global lookup path', function(done){
       var builder = new Builder('test/fixtures/lookups/deep');
