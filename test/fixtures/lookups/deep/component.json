@@ -1,6 +1,6 @@
 {
   "name": "deep",
-  "description": "deep component for testing .setDefaultLookups()",
+  "description": "deep component for testing lookup paths",
   "dependencies": {
     "component-dialog": "*"
   },

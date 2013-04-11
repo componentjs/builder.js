@@ -1,9 +1,9 @@
 {
   "name": "deep2",
-  "description": "deep component for testing .setDefaultLookups()",
+  "description": "deep component for testing lookup paths",
   "dependencies": {
-    "component-dialog": "*",
-    "animal": "*"
+    "component-dialog": "*"
   },
-  "scripts": ["index.js"]
+  "scripts": ["index.js"],
+  "paths": ["../.."]
 }

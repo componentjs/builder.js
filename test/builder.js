@@ -230,7 +230,6 @@ describe('Builder', function(){
 
   it('should build local dependencies', function(done){
     var builder = new Builder('test/fixtures/bundled');
-    builder.addLookup('test/fixtures');
     builder.addLookup('test/fixtures/lib/components');
     builder.build(function(err, res){
       if (err) return done(err);
@@ -259,7 +258,7 @@ describe('Builder', function(){
   })
 
   describe('.addLookup(path)', function(){
-    it('should build dependencies from a default location string', function(done){
+    it('should add a global lookup path', function(done){
       var builder = new Builder('test/fixtures/lookups/deep');
       builder.addLookup('test/fixtures');
       builder.build(function(err, res){
@@ -320,6 +319,16 @@ describe('Builder', function(){
       var js = res.require + res.js + ';require("nested")';
       var ret = vm.runInNewContext(js);
       assert('two' == ret);
+      done();
+    })
+  })
+
+  it('should add root "paths" relative to the component', function(done){
+    var builder = new Builder('test/fixtures/lookups/deep2');
+    builder.build(function(err, res){
+      if (err) return done(err);
+      var out = read('test/fixtures/lookups-deep-js.js', 'utf8').replace(/deep\//g, 'deep2/');
+      res.js.trim().should.equal(out.trim());
       done();
     })
   })
