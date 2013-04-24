@@ -5,3 +5,4 @@ require.register("hello/bar.js", function(exports, require, module){
 module.exports = 'bar';
 });
 require.alias("component-emitter/index.js", "hello/deps/emitter/index.js");
+require.alias("component-emitter/index.js", "emitter/index.js");

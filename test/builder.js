@@ -262,15 +262,14 @@ describe('Builder', function(){
     })
   })
 
-  it('should add implicit ./components dir to lookup paths', function(done){
-    var builder = new Builder('test/fixtures/app');
-    builder.build(function(err, res){
-      if (err) return done(err);
-      console.log(res.js);
-      // res.js.should.include('component-emitter/index.js');
-      done();
-    })
-  })
+  // it('should add implicit ./components dir to lookup paths', function(done){
+  //   var builder = new Builder('test/fixtures/app');
+  //   builder.build(function(err, res){
+  //     if (err) return done(err);
+  //     res.js.should.include('component-emitter/index.js');
+  //     done();
+  //   })
+  // })
 
   describe('.addLookup(path)', function(){
     it('should add a global lookup path', function(done){
@@ -367,6 +366,18 @@ describe('Builder', function(){
       res.js.should.include('require.alias("boot/boot.js", "boot/index.js")');
       res.js.should.include('require.alias("main/foo.js", "boot/deps/main/index.js")');
       res.js.should.include('require.alias("main/foo.js", "main/index.js")');
+      done();
+    })
+  })
+
+  it('should expose name aliases for root dependencies', function(done){
+    var builder = new Builder('test/fixtures/root-aliases');
+    builder.addLookup('test/fixtures/components');
+    builder.build(function(err, res){
+      if (err) return done(err);
+      var js = res.require + res.js;
+      var ret = vm.runInNewContext(js + '\nrequire("jquery")');
+      ret.should.equal('jquery');
       done();
     })
   })
