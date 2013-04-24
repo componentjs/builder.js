@@ -1,7 +1,7 @@
 {
   "name": "collision",
   "paths": [
-	"components",
+  	"components",
     "components/main",
     "lib"
   ],
