@@ -246,6 +246,11 @@ describe('Builder', function(){
     })
   })
 
+  it('should not fail on directory name collisions', function(done){
+    var builder = new Builder('test/fixtures/collision');
+    builder.build(done);
+  })
+
   it('should not build development dependencies by default', function(done){
     var builder = new Builder('test/fixtures/dev-deps');
     builder.addLookup('test/fixtures');
