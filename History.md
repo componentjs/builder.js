@@ -1,4 +1,10 @@
 
+0.7.1 / 2013-04-24 
+==================
+
+  * fix edge-case directory collision when a lookup path is within a lookup path
+    and has the same name as a component
+
 0.7.0 / 2013-04-11
 ==================
 
