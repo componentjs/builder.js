@@ -246,6 +246,16 @@ describe('Builder', function(){
     })
   })
 
+  it('should pass on name collision', function(done){
+    var builder = new Builder('test/fixtures/collision');
+    builder.build(function(err, res){
+      if(err){
+        err.message.should.equal('failed to lookup "bundled"\'s dependency "foo"');
+      }
+      done();
+    })
+  })
+
   it('should not build development dependencies by default', function(done){
     var builder = new Builder('test/fixtures/dev-deps');
     builder.addLookup('test/fixtures');

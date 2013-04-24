@@ -1,0 +1,17 @@
+{
+  "name": "collision",
+  "paths": [
+	"components",
+    "components/main",
+    "lib"
+  ],
+  "local": [
+    "main",
+    "other",
+    "one",
+    "two"
+  ],
+  "scripts": [
+    "index.js"
+  ]
+}
