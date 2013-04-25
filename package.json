@@ -1,6 +1,6 @@
 {
   "name": "component-builder",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Component build tool",
   "keywords": [
     "component",
