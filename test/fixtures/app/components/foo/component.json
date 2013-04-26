@@ -1,4 +1,5 @@
 {
   "name": "foo",
-  "local": ["bar"]
+  "local": ["bar"],
+  "scripts": ["index.js"]
 }
