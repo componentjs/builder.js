@@ -1,4 +1,11 @@
 
+0.8.2 / 2013-05-13 
+==================
+
+  * fix .basename for root components not in a directory of the same config `.name`  
+  * fix improper asset rewrite url join on windows. Closes #94
+  * fix copy/link attempts to files that ENOENT  
+
 0.8.1 / 2013-04-26 
 ==================
 
