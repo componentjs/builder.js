@@ -1,4 +1,11 @@
 
+0.8.3 / 2013-06-06 
+==================
+
+ * update require
+ * fix url to rework in readme
+ * fix leading "/" in url when urlPrefix is empty-string
+
 0.8.2 / 2013-05-13 
 ==================
 
