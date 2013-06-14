@@ -348,6 +348,42 @@ describe('Builder', function(){
     })
   })
 
+  describe('absolute .paths lookup', function() {
+    var tempComponentPath = path.resolve('test/fixtures/lookups/absolute/component.json');
+    before(function() {
+      // Generate a component.json with an absolute path
+      var lookupPath = path.resolve('test/fixtures');
+      var baseComponent = { 
+        name: "absolute", 
+        description: "a component for testing absolute lookup paths",
+        dependencies: {
+          "component-dialog": "*"
+        },
+        scripts: ["index.js"],
+        paths: [
+          lookupPath
+        ]
+      };
+
+      fs.writeFileSync(tempComponentPath, JSON.stringify(baseComponent));
+    });
+
+    after(function() {
+      // Remove the component.json after the test
+      fs.unlinkSync(tempComponentPath);
+    });
+
+    it('should handle absolute paths', function(done) {
+      var builder = new Builder('test/fixtures/lookups/absolute');
+      builder.build(function(err, res) {
+        if(err) return done(err);
+        var out = read('test/fixtures/lookups-absolute-js.js', 'utf8');
+        res.js.trim().should.equal(out.trim());
+        done();
+      })
+    })
+  })
+
   it('should support "main"', function(done){
     var builder = new Builder('test/fixtures/main-boot');
     builder.addLookup('test/fixtures');
