@@ -18,7 +18,8 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*",
-    "ejs": "~0.8.3"
+    "ejs": "~0.8.3",
+    "styl": "0.2.2"
   },
   "repository": {
     "type": "git",

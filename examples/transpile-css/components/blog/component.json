@@ -1,0 +1,5 @@
+{
+  "name": "blog",
+  "description": "the blog component",
+  "styl": ["blog.styl"]
+}

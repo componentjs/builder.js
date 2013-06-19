@@ -1,0 +1,7 @@
+{
+  "name": "app",
+  "description": "the main application component",
+  "paths": [".."],
+  "local": ["blog"],
+  "styl": ["app.styl"]
+}
