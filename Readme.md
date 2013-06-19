@@ -62,12 +62,16 @@ builder.ignore('visionmedia-page')
   Perform the build and pass an object to `fn(err, obj)` containing
   the `.css` and `.js` properties.
 
-## Hooks
+### Builder#hook(name, fn)
 
   A build "hook" is like an event that lets you manipulate the build in process. For
   example you may use a hook to translate coffee script files to javascript automatically,
   or compile a template to javascript so that it may be loaded with `require()`, or use
   CSS pre-processors such as [rework](https://github.com/visionmedia/rework).
+  
+  Available hooks are:
+  - `before scripts`
+  - `before styles`
 
 ## Examples
 
