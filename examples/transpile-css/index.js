@@ -22,7 +22,7 @@ builder.build(function(err, res){
 // could make this async if you wanted
 
 function styl(builder) {
-  builder.hook('before styles', function(pkg, fn){
+  builder.hook('before styles', function(pkg){
     var styles = pkg.config.styl;
     if (!styles) return;
 
@@ -35,7 +35,5 @@ function styl(builder) {
       css = '\n// file: ' + file + '\n\n' + css;
       pkg.addFile('styles', file, css);
     });
-
-    fn();
   });
 }
