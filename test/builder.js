@@ -50,6 +50,19 @@ describe('Builder', function(){
     })
   })
 
+  describe('.buildTemplates(fn)', function(){
+    it('should build the templates', function(done){
+      var builder = new Builder('test/fixtures/template-strings');
+      builder.addLookup('test/fixtures');
+      builder.buildTemplates(function(err, str){
+        if (err) return done(err);
+        var out = read('test/fixtures/template.js', 'utf8');
+        str.trim().should.equal(out);
+        done();
+      })
+    })
+  })
+
   describe('.buildStyles(fn)', function(){
     it('should build the styles', function(done){
       var builder = new Builder('test/fixtures/hello');
@@ -353,8 +366,8 @@ describe('Builder', function(){
     before(function() {
       // Generate a component.json with an absolute path
       var lookupPath = path.resolve('test/fixtures');
-      var baseComponent = { 
-        name: "absolute", 
+      var baseComponent = {
+        name: "absolute",
         description: "a component for testing absolute lookup paths",
         dependencies: {
           "component-dialog": "*"
