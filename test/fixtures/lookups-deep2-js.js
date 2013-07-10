@@ -17,6 +17,5 @@ module.exports = 'deeper'
 });
 require.alias("component-dialog/index.js", "deep2/deps/dialog/index.js");
 require.alias("component-jquery/index.js", "component-dialog/deps/jquery/index.js");
-
 require.alias("animal/index.js", "deep2/deps/animal/index.js");
 require.alias("component-inherit/index.js", "animal/deps/inherit/index.js");
