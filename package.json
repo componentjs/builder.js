@@ -13,7 +13,8 @@
     "mkdirp": "0.3.4",
     "debug": "*",
     "better-assert": "~0.1.0",
-    "cp": "~0.1.0"
+    "cp": "~0.1.0",
+    "string-to-js": "0.0.1"
   },
   "devDependencies": {
     "mocha": "*",

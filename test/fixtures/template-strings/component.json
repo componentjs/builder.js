@@ -1,0 +1,5 @@
+{
+  "name": "templates",
+  "version": "0.0.1",
+  "templates": ["index.html"]
+}
