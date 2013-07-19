@@ -1,4 +1,13 @@
 
+0.9.0 / 2013-07-19 
+==================
+
+ * add support for building templates as strings
+ * add css transpiler example
+ * replace `fs-extra` with `cp`
+ * change Function()-evaled code to actually include newlines
+ * fix absolute path lookup problem #91
+
 0.8.3 / 2013-06-06 
 ==================
 
