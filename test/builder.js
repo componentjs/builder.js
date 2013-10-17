@@ -48,6 +48,17 @@ describe('Builder', function(){
       });
       builder.buildScripts(function(){});
     })
+
+    it('should handle json files', function(done){
+      var builder = new Builder('test/fixtures/json');
+      builder.addLookup('test/fixtures');
+      builder.buildScripts(function(err, js){
+        if (err) return done(err);
+        var out = read('test/fixtures/json.js', 'utf8');
+        js.trim().should.equal(out.trim());
+        done();
+      })
+    })
   })
 
   describe('.buildTemplates(fn)', function(){
