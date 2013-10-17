@@ -1,0 +1,5 @@
+{
+  "name": "json",
+  "version": "0.0.1",
+  "json": ["index.json"]
+}

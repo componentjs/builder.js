@@ -50,6 +50,19 @@ describe('Builder', function(){
     })
   })
 
+  describe('.buildJson(fn)', function(){
+    it('should build the json files', function(done){
+      var builder = new Builder('test/fixtures/json');
+      builder.addLookup('test/fixtures');
+      builder.buildJson(function(err, str){
+        if (err) return done(err);
+        var out = read('test/fixtures/json.js', 'utf8');
+        str.trim().should.equal(out.trim());
+        done();
+      })
+    })
+  })
+
   describe('.buildTemplates(fn)', function(){
     it('should build the templates', function(done){
       var builder = new Builder('test/fixtures/template-strings');
