@@ -48,14 +48,16 @@ describe('Builder', function(){
       });
       builder.buildScripts(function(){});
     })
+  })
 
-    it('should handle json files', function(done){
+  describe('.buildJson(fn)', function(){
+    it('should build the json files', function(done){
       var builder = new Builder('test/fixtures/json');
       builder.addLookup('test/fixtures');
-      builder.buildScripts(function(err, js){
+      builder.buildJson(function(err, str){
         if (err) return done(err);
         var out = read('test/fixtures/json.js', 'utf8');
-        js.trim().should.equal(out.trim());
+        str.trim().should.equal(out.trim());
         done();
       })
     })
