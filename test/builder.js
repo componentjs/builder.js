@@ -42,7 +42,7 @@ describe('Builder', function(){
       var builder = new Builder('test/fixtures/hello');
       builder.addLookup('test/fixtures');
       builder.on('dependency', function(builder){
-        builder.dir.should.be.a('string');
+        builder.dir.should.have.type('string');
         builder.basename.should.equal('component-emitter');
         done();
       });
@@ -92,7 +92,7 @@ describe('Builder', function(){
       var builder = new Builder('test/fixtures/hello');
       builder.addLookup('test/fixtures');
       builder.on('dependency', function(builder){
-        builder.dir.should.be.a('string');
+        builder.dir.should.have.type('string');
         builder.basename.should.equal('component-emitter');
         done();
       });
