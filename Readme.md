@@ -73,6 +73,10 @@ builder.ignore('visionmedia-page')
   - `before scripts`
   - `before styles`
 
+### Builder#use(fn)
+
+  Give the builder a plugin to use. The `fn` args are `fn(builder [, done])`. If The plugin has async logic it should invoke the `done` callback as needed. Sync plugins should ignore this argument.
+
 ## Examples
 
 ### Basic build
