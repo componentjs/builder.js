@@ -243,9 +243,9 @@ describe('Builder', function(){
       builder.prefixUrls('build');
       builder.build(function(err, res){
         if (err) return done(err);
-        res.css.should.include('url("build/assets/./images/logo.png")');
-        res.css.should.include('url("build/assets/./images/maru.jpeg")');
-        res.css.should.include('url("build/assets/css/../images/npm.png")');
+        res.css.should.include('url("build/assets/images/logo.png")');
+        res.css.should.include('url("build/assets/images/maru.jpeg")');
+        res.css.should.include('url("build/assets/images/npm.png")');
         res.css.should.include('url(http://example.com/images/manny.png)');
         res.css.should.include('url(/public/images/foo.png)')
         res.css.should.include('url(data:image/png;base64,PNG DATA HERE)');
