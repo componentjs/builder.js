@@ -1,4 +1,11 @@
 
+0.11.0 / 2013-12-29
+==================
+
+ * remove require aliases. Closes #117
+ * make better-assert a development dependency
+ * normalize URLs in CSS files
+
 0.10.0 / 2013-10-17 
 ==================
 
