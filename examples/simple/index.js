@@ -13,8 +13,9 @@ builder.build(function(err, res){
   // by the components themselves, and must be added.
   // this separation allows for future lazy-loading
   // of component sub-trees void of the require code
+  console.log(res.js);
   var js = res.require + res.js;
   js += 'require("hello")';
-  var ret = vm.runInNewContext(js);
+  var ret = vm.runInNewContext(js, { console: console });
   console.log(ret);
 });

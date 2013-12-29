@@ -40,7 +40,7 @@ function ejsPlugin(builder) {
 describe('Builder hooks', function(){
   describe('"before <type>"', function(){
     it('should allow injection of fabricated files', function(done){
-      var builder = new Builder('test/fixtures/template-plugin');
+      var builder = new Builder('test/fixtures/templates');
       builder.addLookup('test/fixtures');
       builder.use(ejsPlugin);
 
@@ -81,7 +81,7 @@ describe('Builder hooks', function(){
     })
 
     it('should catch hook errors', function (done) {
-      var builder = new Builder('test/fixtures/template-plugin');
+      var builder = new Builder('test/fixtures/templates');
       builder.addLookup('test/fixtures');
       builder.hook('before scripts', function (pkg, cb) {
         cb(new Error('hook error'));
