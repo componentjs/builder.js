@@ -1,6 +1,6 @@
 {
   "name": "app",
   "dependencies": {
-    "component/jquery": "*"
+    "jquery": "*"
   }
 }
