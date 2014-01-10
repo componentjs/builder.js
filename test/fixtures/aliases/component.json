@@ -1,0 +1,9 @@
+{
+  "name": "aliases",
+  "main": "./lib/index.js",
+  "scripts": ["lib/index.js"],
+  "dependencies": {
+    "component/fmt": "*",
+    "component/math": "*"
+  }
+}

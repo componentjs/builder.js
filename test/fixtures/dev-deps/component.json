@@ -1,6 +1,7 @@
 {
   "name": "popover",
   "description": "popover component",
+  "scripts": ["index.js"],
   "dependencies": {
     "component/emitter": "*"
   },
