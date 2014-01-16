@@ -1,20 +1,25 @@
 
-0.10.0 / 2013-10-17 
+0.10.1 / 2014-01-16
+==================
+
+ * fix for lookup casing
+
+0.10.0 / 2013-10-17
 ==================
 
  * add native json support to scripts
 
-0.9.2 / 2013-09-12 
+0.9.2 / 2013-09-12
 ==================
 
  * update require
 
-0.9.1 / 2013-09-06 
+0.9.1 / 2013-09-06
 ==================
 
  * update require
 
-0.9.0 / 2013-07-19 
+0.9.0 / 2013-07-19
 ==================
 
  * add support for building templates as strings
@@ -23,31 +28,31 @@
  * change Function()-evaled code to actually include newlines
  * fix absolute path lookup problem #91
 
-0.8.3 / 2013-06-06 
+0.8.3 / 2013-06-06
 ==================
 
  * update require
  * fix url to rework in readme
  * fix leading "/" in url when urlPrefix is empty-string
 
-0.8.2 / 2013-05-13 
+0.8.2 / 2013-05-13
 ==================
 
-  * fix .basename for root components not in a directory of the same config `.name`  
+  * fix .basename for root components not in a directory of the same config `.name`
   * fix improper asset rewrite url join on windows. Closes #94
-  * fix copy/link attempts to files that ENOENT  
+  * fix copy/link attempts to files that ENOENT
 
-0.8.1 / 2013-04-26 
+0.8.1 / 2013-04-26
 ==================
 
   * fix root-level aliases with .main. Closes #88
 
-0.8.0 / 2013-04-24 
+0.8.0 / 2013-04-24
 ==================
 
   * add root-level aliases. Closes #83
 
-0.7.1 / 2013-04-24 
+0.7.1 / 2013-04-24
 ==================
 
   * fix edge-case directory collision when a lookup path is within a lookup path
