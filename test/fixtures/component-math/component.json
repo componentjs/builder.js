@@ -1,0 +1,5 @@
+{
+  "name": "math",
+  "main": "math.js",
+  "scripts": ["math.js"]
+}

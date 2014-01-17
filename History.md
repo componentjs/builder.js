@@ -1,8 +1,20 @@
 
-0.10.1 / 2014-01-16
+0.11.2 / 2013-12-30
 ==================
 
- * fix for lookup casing
+ * fix main aliasing support
+
+0.11.1 / 2013-12-30
+==================
+
+ * fix main support
+
+0.11.0 / 2013-12-29
+==================
+
+ * remove require aliases. Closes #117
+ * make better-assert a development dependency
+ * normalize URLs in CSS files
 
 0.10.0 / 2013-10-17
 ==================

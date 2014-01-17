@@ -1,0 +1,5 @@
+{
+  "name": "fmt",
+  "main": "index.js",
+  "scripts": ["index.js"]
+}

@@ -9,15 +9,16 @@
   "author": "TJ Holowaychuk <tj@vision-media.caa>",
   "dependencies": {
     "component-require": "0.3.1",
-    "batch": "0.2.1",
+    "batch": "0.5.0",
     "mkdirp": "0.3.4",
     "debug": "*",
     "cp": "~0.1.0",
-    "string-to-js": "0.0.1"
+    "string-to-js": "0.0.1",
+    "requires": "~1.0.0"
   },
   "devDependencies": {
     "mocha": "*",
-    "should": "*",
+    "should": "1.x",
     "ejs": "~0.8.3",
     "styl": "0.2.2",
     "better-assert": "~0.1.0"
