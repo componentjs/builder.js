@@ -14,9 +14,9 @@ describe('commonjs', function(){
     builder.path('..');
     builder.use(commonjs('scripts'));
     builder.use(concat('scripts'));
-    builder.build(function(err, ctx){
+    builder.build(function(err, build){
       if (err) return done(err);
-      var js = ctx.scripts.trim();
+      var js = build.scripts.trim();
       var out = read('test/fixtures/hello-js.js', 'utf8');
       js.should.eql(out.trim());
       done();
@@ -28,10 +28,10 @@ describe('commonjs', function(){
     builder.path('..');
     builder.use(commonjs('json'));
     builder.use(concat('json'))
-    builder.build(function(err, ctx){
+    builder.build(function(err, build){
       if (err) return done(err);
       var out = read('test/fixtures/json.js', 'utf8');
-      ctx.json.trim().should.eql(out.trim());
+      build.json.trim().should.eql(out.trim());
       done();
     });
   })
@@ -41,15 +41,15 @@ describe('commonjs', function(){
     builder.path('..');
     builder.use(commonjs('templates'));
     builder.use(concat('templates'));
-    builder.build(function(err, ctx){
+    builder.build(function(err, build){
       if (err) return done(err);
       var out = read('test/fixtures/template.js', 'utf8');
-      ctx.templates.trim().should.eql(out.trim());
+      build.templates.trim().should.eql(out.trim());
       done();
     });
   });
 
-  it('should include dev dependencies when ctx.dev is true', function(done){
+  it('should include dev dependencies when build.dev is true', function(done){
     var builder = new Builder('test/fixtures/dev-deps');
     builder.path('..');
     builder.development();
@@ -71,11 +71,11 @@ describe('commonjs', function(){
     builder.path('../components');
     builder.use(commonjs('scripts'));
     builder.use(concat('scripts'));
-    builder.build(function(err, ctx){
+    builder.build(function(err, build){
       if (err) return done(err);
-      var js = ctx.requirejs;
-      js += ctx.scripts;
-      js += ctx.aliases;
+      var js = build.requirejs;
+      js += build.scripts;
+      js += build.aliases;
       var ret = vm.runInNewContext(js + '\nrequire("jquery");');
       ret.should.eql('jquery');
       done();
