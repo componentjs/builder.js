@@ -1,10 +1,10 @@
 
-var Lookup = require('../lib/lookup');
+var Resolver = require('../lib/resolver');
 
-describe('Lookup', function(){
-  it('should add implicit ./components dir to lookup paths', function(done){
-    var lookup = Lookup('test/fixtures/app');
-    lookup.end(function(err, res){
+describe('Resolver', function(){
+  it('should add implicit ./components dir to resolver paths', function(done){
+    var resolver = Resolver('test/fixtures/app');
+    resolver.end(function(err, res){
       if (err) return done(err);
       res[1].name.should.eql('foo');
       res[2].name.should.eql('bar');
@@ -14,10 +14,10 @@ describe('Lookup', function(){
 
   describe('.development()', function(){
     it('should include development dependencies', function(done){
-      var lookup = new Lookup('test/fixtures/dev-deps');
-      lookup.add('..');
-      lookup.development();
-      lookup.end(function(err, res){
+      var resolver = new Resolver('test/fixtures/dev-deps');
+      resolver.add('..');
+      resolver.development();
+      resolver.end(function(err, res){
         if (err) return done(err);
         res[1].name.should.eql('emitter');
         res[2].name.should.eql('jquery');
@@ -28,7 +28,7 @@ describe('Lookup', function(){
 
   describe('nested', function(){
     it('should work', function(done){
-      var nested = Lookup('test/fixtures/nested');
+      var nested = Resolver('test/fixtures/nested');
       nested.add('..');
       nested.end(function(err, arr){
         if (err) return done(err);
@@ -43,14 +43,14 @@ describe('Lookup', function(){
 
   describe('collision', function(){
     it('should work', function(done){
-      var collision = Lookup('test/fixtures/collision');
+      var collision = Resolver('test/fixtures/collision');
       collision.end(done);
     })
   })
 
   describe('scripts', function(){
     it('should pull them', function(done){
-      var scripts = Lookup('test/fixtures/hello');
+      var scripts = Resolver('test/fixtures/hello');
       scripts.add('..');
       scripts.end(function(err, all){
         if (err) return done(err);
@@ -69,7 +69,7 @@ describe('Lookup', function(){
 
   describe('templates', function(){
     it('should pull them', function(done){
-      var templates = Lookup('test/fixtures/template-strings');
+      var templates = Resolver('test/fixtures/template-strings');
       templates.end(function(err, all){
         if (err) return done(err);
         all.length.should.eql(1);
@@ -83,7 +83,7 @@ describe('Lookup', function(){
 
   describe('styles', function(){
     it('should pull them', function(done){
-      var styles = Lookup('test/fixtures/hello');
+      var styles = Resolver('test/fixtures/hello');
       styles.add('..');
       styles.end(function(err, all){
         if (err) return done(err);
@@ -99,7 +99,7 @@ describe('Lookup', function(){
 
   describe('json', function(){
     it('should pull them', function(done){
-      var json = Lookup('test/fixtures/json');
+      var json = Resolver('test/fixtures/json');
       json.end(function(err, all){
         if (err) return done(err);
         var json = all[0].json.shift();
@@ -111,10 +111,10 @@ describe('Lookup', function(){
   })
 
   describe('failure', function(){
-    it('should error on failed dep lookup', function(done){
-      var failure = Lookup('test/fixtures/bundled');
+    it('should error on failed dep resolver', function(done){
+      var failure = Resolver('test/fixtures/bundled');
       failure.end(function(err){
-        err.message.should.equal('failed to lookup "hello"\'s dependency "foo"');
+        err.message.should.equal('failed to resolve "hello"\'s dependency "foo"');
         done();
       });
     })
