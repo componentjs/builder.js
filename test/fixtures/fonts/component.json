@@ -1,0 +1,10 @@
+{
+  "name": "fonts",
+  "description": "a bunch of fonts",
+  "styles": [
+    "style.css"
+  ],
+  "fonts": [
+    "montserrat-regular.ttf"
+  ]
+}
