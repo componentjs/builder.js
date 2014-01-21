@@ -7,9 +7,9 @@ describe('concat(type)', function(){
     var builder = new Builder('test/fixtures/hello');
     builder.path('..');
     builder.use(concat('styles'));
-    builder.build(function(err, ctx){
+    builder.build(function(err, build){
       if (err) return done(err);
-      ctx.styles.should.eql('foo {\n  bar: \'baz\';\n}bar {\n  baz: \'raz\';\n}emitter {\n  \n}');
+      build.styles.should.eql('foo {\n  bar: \'baz\';\n}bar {\n  baz: \'raz\';\n}emitter {\n  \n}');
       done();
     });
   })
