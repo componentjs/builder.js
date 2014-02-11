@@ -1,5 +1,7 @@
 # builder.js
 
+  __NOTE__: to use the old (original) API, use 0.10.x, the 0.12.x release breaks backwards compat, and requires additional changes before we'll be re-documenting.
+
   Component build tool. This is the library that `component(1)` utilizes
   to perform component builds.
 
