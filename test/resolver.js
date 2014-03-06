@@ -41,6 +41,14 @@ describe('Resolver', function(){
     })
   })
 
+
+  describe('locals', function(){
+    it('should work', function(done){
+      var resolver = Resolver('test/fixtures/locals');
+      resolver.end(done);
+    })
+  })
+
   describe('collision', function(){
     it('should work', function(done){
       var collision = Resolver('test/fixtures/collision');

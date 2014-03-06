@@ -1,0 +1,6 @@
+{
+  "name": "boot",
+  "main": "index.js",
+  "scripts": ["index.js"],
+  "local": ["a"]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "app",
+  "main": "app.js",
+  "paths": ["lib"],
+  "scripts": ["app.js"],
+  "local": ["boot"]
+}
