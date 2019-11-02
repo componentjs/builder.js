@@ -19,7 +19,7 @@
   "devDependencies": {
     "mocha": "*",
     "should": "1.x",
-    "ejs": "~0.8.3",
+    "ejs": "~2.7.1",
     "styl": "0.2.2",
     "better-assert": "~0.1.0"
   },
